@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F5F4F0;--white:#fff;--green:#3DAA6E;--yellow:#F5C842;--coral:#E8554E;--blue:#4A90D9;--purple:#8B5CF6;--text:#1A1A1A;--muted:#6B6B6B;--border:#E5E3DE;--sh:0 2px 12px rgba(0,0,0,.08);--sh-lg:0 8px 32px rgba(0,0,0,.12);--r:18px;--rs:10px;--nav:80px}
+:root{--bg:#F5F4F0;--white:#fff;--green:#2D9A5E;--yellow:#F5C842;--coral:#E8554E;--blue:#2E6FBF;--purple:#8B5CF6;--text:#1A1A1A;--muted:#6B6B6B;--border:#E5E3DE;--sh:0 2px 12px rgba(0,0,0,.08);--sh-lg:0 8px 32px rgba(0,0,0,.12);--r:18px;--rs:10px;--nav:80px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;overflow-x:hidden}
 .screen{display:none;min-height:calc(100vh - var(--nav));padding:24px 20px calc(var(--nav) + 24px);animation:fadeIn .25s ease}
@@ -375,7 +375,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 <div id="screen-suivi" class="screen">
   <div class="screen-header">Suivi 📊</div>
   <div id="challenge-section"></div>
-  <!-- XP progression chart in suivi -->
   <div class="card" id="xp-suivi-card" style="margin-bottom:16px">
     <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:900;margin-bottom:4px">XP & Niveaux ⚡</div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:12px" id="xp-suivi-summary">—</div>
@@ -399,7 +398,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
       </div>
       <div style="font-size:11px;color:var(--muted);margin-top:4px;text-align:center" id="xp-suivi-next">— XP pour niveau suivant</div>
     </div>
-    <!-- Progression paliers par exercice -->
     <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Paliers exercices</div>
     <div id="xp-paliers-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"></div>
   </div>
@@ -475,7 +473,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="settings-row" onclick="exportData()"><div class="s-left"><div class="s-icon" style="background:#EFF6FF">💾</div><div><div class="s-label">Sauvegarder mes données</div><div class="s-sub">Export JSON de l'historique</div></div></div><span class="s-arrow">↓</span></div>
     <div class="settings-row" onclick="resetData()"><div class="s-left"><div class="s-icon" style="background:#FEF2F2">🗑️</div><div><div class="s-label">Réinitialiser</div><div class="s-sub">Effacer tout l'historique</div></div></div><span class="s-arrow">→</span></div>
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.13 · Pour Boris 💪</div>
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.14 · Pour Boris 💪</div>
 </div>
 
 <!-- NAV -->
@@ -538,7 +536,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 // Pour timed : sets × seconds. Progression par +5s tous les 2 cycles.
 // threshold = seuil déclencheur "prêt à progresser"
 const SESSIONS = {
-  A:{type:'A',name:'Full Body Push/Fessiers',color:'#3DAA6E',exercises:[
+  A:{type:'A',name:'Full Body Push/Fessiers',color:'#1E7A4A',exercises:[
     {id:'a1',name:'Jumping jacks',exType:'cardio',sets:3,repsTarget:40,restSecs:30,
      why:'Échauffement cardio complet en 3 min, zéro équipement, zéro préparation. Active la circulation, chauffe les articulations des chevilles aux épaules, et monte la fréquence cardiaque progressivement avant l\'effort musculaire. Idéal pour préparer le corps sans risque.',
      technique:[
@@ -561,7 +559,7 @@ const SESSIONS = {
        'Remonter en poussant dans les talons, expirer en montant'
      ],
      progression:'3×10 → 3×12 → 3×15 → squat bulgare (pied arrière sur chaise).',
-     threshold:15,videoLink:'https://www.youtube.com/results?search_query=squat+poids+du+corps+technique',alts:[{name:'Squat sur chaise',diff:'🟢 Plus facile',desc:'Descends jusqu\'à toucher la chaise et remonte. Idéal pour apprendre le mouvement.'},{name:'Squat bulgare',diff:'⚡ Plus intense',desc:'Pied arrière sur chaise. Force unilatérale et équilibre.'},{name:'Squat sauté',diff:'🔥 Explosif',desc:'Même mouvement mais tu sautes en remontant. Cardio + force.'}]},elasticVariant:{band:'gray',usage:'Bande autour des cuisses (juste au-dessus des genoux) — usage standard, pas optionnel. Active les fessiers moyens et corrige les genoux qui rentrent vers l\'intérieur. Le squat sans bande devient sous-stimulant rapidement : avec la bande, tu travailles en même temps les abducteurs de hanche et tu forces un alignement parfait des genoux.',tip:'Pousse activement les genoux vers l\'extérieur contre la résistance tout au long du mouvement.'},
+     threshold:15,videoLink:'https://www.youtube.com/results?search_query=squat+poids+du+corps+technique',alts:[{name:'Squat sur chaise',diff:'🟢 Plus facile',desc:'Descends jusqu\'à toucher la chaise et remonte. Idéal pour apprendre le mouvement.'},{name:'Squat bulgare',diff:'⚡ Plus intense',desc:'Pied arrière sur chaise. Force unilatérale et équilibre.'},{name:'Squat sauté',diff:'🔥 Explosif',desc:'Même mouvement mais tu sautes en remontant. Cardio + force.'}],elasticVariant:{band:'gray',usage:'Bande autour des cuisses (juste au-dessus des genoux) — usage standard, pas optionnel. Active les fessiers moyens et corrige les genoux qui rentrent vers l\'intérieur. Le squat sans bande devient sous-stimulant rapidement : avec la bande, tu travailles en même temps les abducteurs de hanche et tu forces un alignement parfait des genoux.',tip:'Pousse activement les genoux vers l\'extérieur contre la résistance tout au long du mouvement.'}},
     {id:'a3',name:'Pompes',exType:'reps',sets:3,repsTarget:10,restSecs:60,
      why:'L\'exercice push le plus complet au sol. Développe les pectoraux, les deltoïdes antérieurs, les triceps et sollicite fortement le gainage du tronc. Un seul exercice qui travaille push + core simultanément. Tes pompes actuelles (18/15/10) montrent déjà un bon niveau de départ.',
      technique:[
@@ -573,7 +571,7 @@ const SESSIONS = {
        'Si trop difficile : pompes sur les genoux en gardant l\'alignement bassin-épaules'
      ],
      progression:'3×10 → 3×12 → 3×15 → pause 2s en bas → pompes déclinées (pieds surélevés).',
-     threshold:15,videoLink:'https://www.youtube.com/results?search_query=pompes+technique+debutant',alts:[{name:'Pompes sur les genoux',diff:'🟢 Plus facile',desc:'Même alignement bassin-épaules mais genoux au sol. -30% de charge.'},{name:'Pompes inclinées',diff:'🟢 Plus facile',desc:'Mains sur le canapé. Angle réduit = moins difficile.'},{name:'Pompes déclinées',diff:'⚡ Plus intense',desc:'Pieds surélevés sur chaise. Cible épaules et haut des pectoraux.'}]},elasticVariant:{band:'gray',usage:'Bande en croix dans le dos : passe les deux mains dans la bande, croise-la sur le sternum. Résistance ajoutée à la poussée — excellent pour surcharger sans matériel lourd.',tip:'Sens la tension dès le départ, ajuste l\'écartement des mains si trop serré.'},
+     threshold:15,videoLink:'https://www.youtube.com/results?search_query=pompes+technique+debutant',alts:[{name:'Pompes sur les genoux',diff:'🟢 Plus facile',desc:'Même alignement bassin-épaules mais genoux au sol. -30% de charge.'},{name:'Pompes inclinées',diff:'🟢 Plus facile',desc:'Mains sur le canapé. Angle réduit = moins difficile.'},{name:'Pompes déclinées',diff:'⚡ Plus intense',desc:'Pieds surélevés sur chaise. Cible épaules et haut des pectoraux.'}],elasticVariant:{band:'gray',usage:'Bande en croix dans le dos : passe les deux mains dans la bande, croise-la sur le sternum. Résistance ajoutée à la poussée — excellent pour surcharger sans matériel lourd.',tip:'Sens la tension dès le départ, ajuste l\'écartement des mains si trop serré.'}},
     {id:'a4',name:'Gainage frontal',exType:'timed',sets:3,repsTarget:25,restSecs:45,
      why:'Renforce le transverse de l\'abdomen — le muscle profond qui "ceinture" le tronc et protège le bas du dos. Contrairement aux crunchs, le gainage ne comprime pas les vertèbres. C\'est la base de toute stabilité pour les autres exercices.',
      technique:[
@@ -585,7 +583,7 @@ const SESSIONS = {
        'Si ça tremble après 15s, c\'est normal et bénéfique — tiens jusqu\'au bout'
      ],
      progression:'25s → 30s → 40s → 50s → 60s → gainage avec levée de jambe alternée 3s.',
-     threshold:50,videoLink:'https://www.youtube.com/results?search_query=gainage+frontal+planche+technique',alts:[{name:'Gainage sur les genoux',diff:'🟢 Plus facile',desc:'Même position mais genoux au sol. Réduit la charge sur le core.'},{name:'Gainage + levée jambe',diff:'⚡ Plus intense',desc:'Lever une jambe 3s en alternant. Déstabilise et renforce davantage.'},{name:'Gainage latéral',diff:'🔄 Variation',desc:'Sur l\'avant-bras latéral. Cible les obliques.'}]},elasticVariant:{band:'gray',usage:'Bande autour des chevilles. En gainage, tu pousses légèrement les pieds vers l\'extérieur contre la résistance. Active les abducteurs et stabilisateurs de hanche en continu.',tip:'Mouvement subtil — l\'objectif est la tension constante, pas un écart visible.'},
+     threshold:50,videoLink:'https://www.youtube.com/results?search_query=gainage+frontal+planche+technique',alts:[{name:'Gainage sur les genoux',diff:'🟢 Plus facile',desc:'Même position mais genoux au sol. Réduit la charge sur le core.'},{name:'Gainage + levée jambe',diff:'⚡ Plus intense',desc:'Lever une jambe 3s en alternant. Déstabilise et renforce davantage.'},{name:'Gainage latéral',diff:'🔄 Variation',desc:'Sur l\'avant-bras latéral. Cible les obliques.'}],elasticVariant:{band:'gray',usage:'Bande autour des chevilles. En gainage, tu pousses légèrement les pieds vers l\'extérieur contre la résistance. Active les abducteurs et stabilisateurs de hanche en continu.',tip:'Mouvement subtil — l\'objectif est la tension constante, pas un écart visible.'}},
     {id:'a5',name:'Pont fessier',exType:'reps',sets:3,repsTarget:12,restSecs:60,
      why:'Le meilleur exercice de renforcement fessier accessible sans équipement. Active les fessiers, ischio-jambiers et stabilisateurs lombaires simultanément. Corrige la posture antéversée du bassin typique des personnes qui travaillent assis. Avec la bande, tu doubles l\'activation des fessiers moyens — c\'est l\'exercice le plus Pareto qui existe pour les muscles postérieurs.',
      technique:[
@@ -614,9 +612,9 @@ const SESSIONS = {
        'Si trop difficile, rapprocher légèrement les mains sans aller jusqu\'au diamant parfait'
      ],
      progression:'2×6 → 2×8 → 2×10 → pieds surélevés sur chaise.',
-     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+diamant+tutorial',alts:[{name:'Dips sur chaise',diff:'🔄 Variation',desc:'Mains sur chaise derrière toi, pieds au sol, descendre et remonter. Triceps pur.'},{name:'Pompes diamant genoux',diff:'🟢 Plus facile',desc:'Même position mains mais genoux au sol. -30% de charge.'}]},elasticVariant:{band:'gray',usage:'Même setup que les pompes : bande croisée dans le dos, mains dans la boucle. Résistance concentrée sur les triceps qui font le gros du travail sur les pompes diamant.',tip:'Si trop difficile, utilise la bande seule sans la croiser.'}
+     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+diamant+tutorial',alts:[{name:'Dips sur chaise',diff:'🔄 Variation',desc:'Mains sur chaise derrière toi, pieds au sol, descendre et remonter. Triceps pur.'},{name:'Pompes diamant genoux',diff:'🟢 Plus facile',desc:'Même position mains mais genoux au sol. -30% de charge.'}],elasticVariant:{band:'gray',usage:'Même setup que les pompes : bande croisée dans le dos, mains dans la boucle. Résistance concentrée sur les triceps qui font le gros du travail sur les pompes diamant.',tip:'Si trop difficile, utilise la bande seule sans la croiser.'}}
   ]},
-  B:{type:'B',name:'Full Body Pull/Postural + Tirage',color:'#4A90D9',exercises:[
+  B:{type:'B',name:'Full Body Pull/Postural + Tirage',color:'#1A5FAB',exercises:[
     {id:'b1',name:'Jumping jacks',exType:'cardio',sets:3,repsTarget:40,restSecs:30,
      why:'Même logique que la séance A : activation cardio complète en 3 min sans préparation. Chauffe les épaules et les hanches qui vont être sollicitées dans les exercices de tirage et unilatéraux qui suivent.',
      technique:[
@@ -639,7 +637,7 @@ const SESSIONS = {
        'Remonter en poussant dans le talon avant. Faire toutes les reps d\'un côté, puis changer'
      ],
      progression:'3×6 → 3×8 → 3×10/jambe → bouteilles d\'eau lestées dans chaque main.',
-     threshold:10,videoLink:'https://www.youtube.com/results?search_query=squat+bulgare+technique+debutant',alts:[{name:'Fente avant',diff:'🟢 Plus facile',desc:'Grand pas en avant, genou avant à 90°. Même muscles, plus stable.'},{name:'Fente latérale',diff:'🔄 Variation',desc:'Grand pas sur le côté. Adducteurs très ciblés.'},{name:'Squat bulgare lesté',diff:'⚡ Plus intense',desc:'Même exercice avec bouteilles d\'eau dans chaque main.'}]},elasticVariant:{band:'gray',usage:'Bande autour des cuisses — usage standard. Le squat bulgare avec bande cible simultanément le quadriceps, le fessier et l\'abducteur. La bande empêche aussi le genou avant de s\'effondrer vers l\'intérieur — défaut très courant sur cet exercice. Sensation de brûlure latérale intense dès la 2ème série.',tip:'Pousse activement le genou vers l\'extérieur contre la bande — c\'est le cue technique clé de cet exercice.'},
+     threshold:10,videoLink:'https://www.youtube.com/results?search_query=squat+bulgare+technique+debutant',alts:[{name:'Fente avant',diff:'🟢 Plus facile',desc:'Grand pas en avant, genou avant à 90°. Même muscles, plus stable.'},{name:'Fente latérale',diff:'🔄 Variation',desc:'Grand pas sur le côté. Adducteurs très ciblés.'},{name:'Squat bulgare lesté',diff:'⚡ Plus intense',desc:'Même exercice avec bouteilles d\'eau dans chaque main.'}],elasticVariant:{band:'gray',usage:'Bande autour des cuisses — usage standard. Le squat bulgare avec bande cible simultanément le quadriceps, le fessier et l\'abducteur. La bande empêche aussi le genou avant de s\'effondrer vers l\'intérieur — défaut très courant sur cet exercice. Sensation de brûlure latérale intense dès la 2ème série.',tip:'Pousse activement le genou vers l\'extérieur contre la bande — c\'est le cue technique clé de cet exercice.'}},
     {id:'b3',name:'W au sol',exType:'reps',sets:3,repsTarget:12,restSecs:60,
      why:'Renforce les rhomboïdes et les trapèzes moyens — les muscles entre et sous les omoplates. Ces muscles sont chroniquement sous-sollicités dans la vie moderne (travail sur écran, position assise). Les renforcer corrige la posture voûtée et prévient les douleurs cervicales et dorsales. Complément indispensable aux pompes pour équilibrer le dos.',
      technique:[
@@ -651,7 +649,7 @@ const SESSIONS = {
        'Ne cherche pas à monter haut — cherche à serrer fort. L\'amplitude est faible, l\'intensité musculaire est élevée'
      ],
      progression:'3×12 → 3×15 → W lesté : bouteille 50cl dans chaque main → bouteille 1L.',
-     threshold:15,videoLink:'https://www.youtube.com/results?search_query=W+exercise+posture+rhomboids+floor',alts:[{name:'W lesté bouteilles 50cl',diff:'⚡ Plus intense',desc:'Même mouvement avec une bouteille dans chaque main. Difficulté nettement augmentée.'},{name:'Y au sol',diff:'⚡ Variation avancée',desc:'Bras tendus en Y à 45° au-dessus de la tête. Cible les trapèzes inférieurs.'},{name:'Superman',diff:'🔄 Variation',desc:'Bras et jambes levés simultanément. Toute la chaîne postérieure.'}]},elasticVariant:{band:'gray',usage:'Bande autour des poignets — usage standard. En faisant le W, tu surmontes la résistance pour écarter les coudes. Sans bande, le W au sol devient trop facile après 4-5 séances. Avec bande, les rhomboïdes et deltoïdes postérieurs travaillent vraiment. C\'est la différence entre un exercice de mobilité et un exercice de renforcement.',tip:'Écartement des poignets dans la bande : assez serré pour sentir la résistance dès le début du mouvement.'},
+     threshold:15,videoLink:'https://www.youtube.com/results?search_query=W+exercise+posture+rhomboids+floor',alts:[{name:'W lesté bouteilles 50cl',diff:'⚡ Plus intense',desc:'Même mouvement avec une bouteille dans chaque main. Difficulté nettement augmentée.'},{name:'Y au sol',diff:'⚡ Variation avancée',desc:'Bras tendus en Y à 45° au-dessus de la tête. Cible les trapèzes inférieurs.'},{name:'Superman',diff:'🔄 Variation',desc:'Bras et jambes levés simultanément. Toute la chaîne postérieure.'}],elasticVariant:{band:'gray',usage:'Bande autour des poignets — usage standard. En faisant le W, tu surmontes la résistance pour écarter les coudes. Sans bande, le W au sol devient trop facile après 4-5 séances. Avec bande, les rhomboïdes et deltoïdes postérieurs travaillent vraiment. C\'est la différence entre un exercice de mobilité et un exercice de renforcement.',tip:'Écartement des poignets dans la bande : assez serré pour sentir la résistance dès le début du mouvement.'}},
     {id:'b4',name:'Gainage latéral',exType:'timed',sets:3,repsTarget:15,restSecs:45,
      why:'Renforce les obliques et les muscles stabilisateurs latéraux du rachis. Ces muscles maintiennent le bassin horizontal quand tu marches ou cours. Complément direct au gainage frontal pour une ceinture abdominale complète.',
      technique:[
@@ -663,7 +661,7 @@ const SESSIONS = {
        'Recommencer de l\'autre côté. Chaque côté compte comme une série'
      ],
      progression:'15s → 20s → 25s → 30s → levée de jambe pendant le gainage.',
-     threshold:30,videoLink:'https://www.youtube.com/results?search_query=side+plank+tutorial+gainage+lateral',alts:[{name:'Gainage latéral genoux',diff:'🟢 Plus facile',desc:'Genou du bas au sol, même alignement. -30% de charge.'},{name:'Gainage latéral + levée jambe',diff:'⚡ Plus intense',desc:'Lever la jambe du dessus 3s. Core latéral ++.'}]},elasticVariant:{band:'gray',usage:'Bande autour des chevilles. En gainage latéral, lève légèrement la jambe du dessus contre la résistance. Obliques + fessier moyen en simultané.',tip:'Tu peux aussi juste laisser la bande tendue sans lever — déjà très efficace.'},
+     threshold:30,videoLink:'https://www.youtube.com/results?search_query=side+plank+tutorial+gainage+lateral',alts:[{name:'Gainage latéral genoux',diff:'🟢 Plus facile',desc:'Genou du bas au sol, même alignement. -30% de charge.'},{name:'Gainage latéral + levée jambe',diff:'⚡ Plus intense',desc:'Lever la jambe du dessus 3s. Core latéral ++.'}],elasticVariant:{band:'gray',usage:'Bande autour des chevilles. En gainage latéral, lève légèrement la jambe du dessus contre la résistance. Obliques + fessier moyen en simultané.',tip:'Tu peux aussi juste laisser la bande tendue sans lever — déjà très efficace.'}},
     {id:'b5',name:'Pompes déclinées',exType:'reps',sets:3,repsTarget:6,restSecs:60,
      why:'Variante des pompes qui incline le corps (pieds plus hauts que les mains) pour cibler spécifiquement les deltoïdes antérieurs (épaules avant) et la partie claviculaire des pectoraux. Progression naturelle vers les pompes sur épaule et le handstand push-up.',
      technique:[
@@ -675,7 +673,7 @@ const SESSIONS = {
        'Plus les pieds sont hauts, plus l\'exercice est difficile et cible les épaules'
      ],
      progression:'3×6 → 3×8 → 3×10 → pieds plus hauts (tabouret, puis mur).',
-     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+declin%C3%A9es+technique',alts:[{name:'Pompes classiques',diff:'🟢 Plus facile',desc:'Si les déclinées sont trop difficiles, bonne technique avant tout.'},{name:'Pike push-up',diff:'⚡ Plus intense',desc:'Fesses en l\'air, descendre la tête vers le sol. Épaules très ciblées.'}]},elasticVariant:{band:'gray',usage:'Bande croisée dans le dos comme pour les pompes classiques. En version déclinée, l\'angle met encore plus les épaules à contribution — la bande amplifie ça.',tip:'Vérifie que la bande ne glisse pas de tes paumes avant de commencer.'},
+     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+declin%C3%A9es+technique',alts:[{name:'Pompes classiques',diff:'🟢 Plus facile',desc:'Si les déclinées sont trop difficiles, bonne technique avant tout.'},{name:'Pike push-up',diff:'⚡ Plus intense',desc:'Fesses en l\'air, descendre la tête vers le sol. Épaules très ciblées.'}],elasticVariant:{band:'gray',usage:'Bande croisée dans le dos comme pour les pompes classiques. En version déclinée, l\'angle met encore plus les épaules à contribution — la bande amplifie ça.',tip:'Vérifie que la bande ne glisse pas de tes paumes avant de commencer.'}},
     {id:'b6',name:'Superman',exType:'reps',sets:3,repsTarget:10,restSecs:45,
      why:'Extension dorsale complète qui renforce toute la chaîne postérieure : érecteurs du rachis, fessiers et ischio-jambiers simultanément. Prévient activement le mal de dos. Exercice allongé sur le ventre — enchaîne naturellement avec le W au sol sans changer de position.',
      technique:[
@@ -687,7 +685,7 @@ const SESSIONS = {
        'Respirer : inspire avant de monter, expire en tenant la position haute'
      ],
      progression:'3×10 → 3×12 → 3×15 → tiens 5s en haut → Superman alterné (bras gauche + jambe droite, puis inverse).',
-     threshold:15,videoLink:'https://www.youtube.com/results?search_query=superman+exercise+back+extension+tutorial',alts:[{name:'Superman alterné',diff:'⚡ Plus intense',desc:'Bras gauche + jambe droite simultanément, tenir 3s, alterner.'},{name:'Pont fessier',diff:'🟢 Plus facile',desc:'Sur le dos, pieds au sol, monter le bassin. Chaîne postérieure plus accessible.'},{name:'Bird dog',diff:'🔄 Variation',desc:'À 4 pattes, étendre bras droit + jambe gauche. Stabilité du tronc.'}]},elasticVariant:{band:'gray',usage:'Bande autour des chevilles — usage standard. La résistance à l\'extension de hanche force les érecteurs spinaux et les fessiers à travailler contre une charge réelle. Sans bande, le Superman est un exercice de maintien. Avec bande, c\'est un exercice de renforcement.',tip:'Contrôle la descente — ne laisse pas la bande claquer, c\'est là que tu construis la force.'}},
+     threshold:15,videoLink:'https://www.youtube.com/results?search_query=superman+exercise+back+extension+tutorial',alts:[{name:'Superman alterné',diff:'⚡ Plus intense',desc:'Bras gauche + jambe droite simultanément, tenir 3s, alterner.'},{name:'Pont fessier',diff:'🟢 Plus facile',desc:'Sur le dos, pieds au sol, monter le bassin. Chaîne postérieure plus accessible.'},{name:'Bird dog',diff:'🔄 Variation',desc:'À 4 pattes, étendre bras droit + jambe gauche. Stabilité du tronc.'}],elasticVariant:{band:'gray',usage:'Bande autour des chevilles — usage standard. La résistance à l\'extension de hanche force les érecteurs spinaux et les fessiers à travailler contre une charge réelle. Sans bande, le Superman est un exercice de maintien. Avec bande, c\'est un exercice de renforcement.',tip:'Contrôle la descente — ne laisse pas la bande claquer, c\'est là que tu construis la force.'}},
     {id:'b7',name:'Face pull élastique',exType:'reps',sets:3,repsTarget:12,restSecs:45,
      why:'Le grand absent de la plupart des programmes poids du corps : le tirage horizontal. Cible les rhomboïdes, deltoïdes postérieurs et rotateurs externes — exactement les muscles atrophiés par les journées devant un écran. Corrige activement la posture enroulée. Avec le face pull, tu équilibres le ratio poussée/tirage du programme. Sans lui, les pompes créent un déséquilibre musculaire sur la durée.',
      technique:[
@@ -842,7 +840,7 @@ const MOTIVE_REST=[
 ];
 const CHECKIN_FEEDBACK={
   tired:{msg:'😴 Écoute ton corps. Dors bien ce soir.',color:'#6B7280'},
-  normal:{msg:'😊 Bonne récup en cours. Tu seras affûté pour la prochaine séance.',color:'#3DAA6E'},
+  normal:{msg:'😊 Bonne récup en cours. Tu seras affûté pour la prochaine séance.',color:'#1E7A4A'},
   great:{msg:'⚡ Top forme ! Une marche active ou des étirements ce soir ?',color:'#F5C842'}
 };
 
@@ -860,7 +858,7 @@ let state={
   repsHistory:{}, // exId -> [{date, reps:[]}]
   xp:0,
   level:1,
-  xpLog:[], // [{date, xp, reason, delta}] — XP history for suivi chart
+  xpLog:[],
   challenge:null, // {startDate, rewardText, stakeText, sessionsRequired, sessionsWeek, weeklyTarget, completed, failed}
   weeklyPenalties:{}, // weekKey -> true, tracks weeks where penalty was already applied
   progressionStep:{} // exId -> step index (0-based), tracks current progression level
@@ -874,7 +872,7 @@ let selectedExId=null;
 function loadState(){
   // Try v1.3 key first, then migrate from v1.2
   try{
-    const s=localStorage.getItem('bodyflow_v113')||localStorage.getItem('bodyflow_v112')||localStorage.getItem('bodyflow_v111')||localStorage.getItem('bodyflow_v110');
+    const s=localStorage.getItem('bodyflow_v114')||localStorage.getItem('bodyflow_v112')||localStorage.getItem('bodyflow_v111')||localStorage.getItem('bodyflow_v110')||localStorage.getItem('bodyflow_v19');
     if(s){state={...state,...JSON.parse(s)};return;}
     const old=localStorage.getItem('bodyflow_v12');
     if(old){
@@ -885,7 +883,7 @@ function loadState(){
     }
   }catch(e){}
 }
-function saveState(){localStorage.setItem('bodyflow_v113',JSON.stringify(state))}
+function saveState(){localStorage.setItem('bodyflow_v114',JSON.stringify(state))}
 
 // ============================================================
 // NAVIGATION
@@ -901,7 +899,7 @@ function showScreen(name,btn){
 }
 
 // ============================================================
-// TODAY — gestion état "séance déjà faite aujourd'hui"
+// TODAY — gestion etat seance deja faite aujourd hui
 // ============================================================
 function todayKey(){return new Date().toISOString().split('T')[0]}
 
@@ -1037,32 +1035,28 @@ function checkProgressionAlerts(sessionType){
   const candidates=[];
   sess.exercises.forEach(ex=>{
     const chain=PROGRESSION_CHAINS[ex.id];
-    if(!chain) return;
+    if(!chain)return;
     const currentStep=(state.progressionStep&&state.progressionStep[ex.id])||0;
-    if(currentStep>=chain.length-1) return; // maxed out
+    if(currentStep>=chain.length-1)return;
     const step=chain[currentStep];
     const target=step.repsTarget;
     const hist=state.repsHistory[ex.id]||[];
-    if(hist.length<1) return;
-    // Show progress toward next level: how many of last 3 hit target
+    if(!hist.length)return;
     const last3=hist.slice(-3);
     const hitCount=last3.filter(s=>(s.reps||[]).length>0&&s.reps.every(r=>r>=target)).length;
-    const needed=Math.min(3,last3.length);
-    if(hitCount>0) candidates.push({ex,hitCount,needed,currentStep,nextLabel:chain[currentStep+1]?.label,target});
+    if(hitCount>0)candidates.push({ex,hitCount,target,nextLabel:chain[currentStep+1]?.label});
   });
   const alert=document.getElementById('prog-alert');
   if(!candidates.length){alert.style.display='none';return;}
-  // Show the one closest to leveling up
   candidates.sort((a,b)=>b.hitCount-a.hitCount);
-  const {ex,hitCount,needed,nextLabel,target}=candidates[0];
-  const isReady=hitCount>=3;
+  const {ex,hitCount,target,nextLabel}=candidates[0];
   alert.style.display='flex';
-  if(isReady){
-    document.getElementById('prog-alert-title').textContent=`🎯 Prêt à progresser : ${ex.name}`;
-    document.getElementById('prog-alert-sub').textContent=`3/3 séances à ${target}+ — la progression se déclenchera automatiquement à la fin de ta prochaine séance !`;
+  if(hitCount>=3){
+    document.getElementById('prog-alert-title').textContent='🎯 Prêt à progresser : '+ex.name;
+    document.getElementById('prog-alert-sub').textContent='3/3 séances à '+target+'+ — progression automatique à la fin de ta prochaine séance !';
   } else {
-    document.getElementById('prog-alert-title').textContent=`📈 Progression en cours : ${ex.name}`;
-    document.getElementById('prog-alert-sub').textContent=`${hitCount}/3 séances à ${target}+ reps → prochain palier : ${nextLabel||'niveau max'}`;
+    document.getElementById('prog-alert-title').textContent='📈 Progression en cours : '+ex.name;
+    document.getElementById('prog-alert-sub').textContent=hitCount+'/3 séances à '+target+'+ reps → prochain palier : '+(nextLabel||'niveau max');
   }
 }
 
@@ -1093,25 +1087,25 @@ function renderExercises(sess){
     const prevData=(state.repsHistory[ex.id]||[]).slice(-1)[0];
     const prevText=prevData&&prevData.reps.length?`↩ Dernière fois: ${prevData.reps.join(' / ')} ${ex.exType==='timed'?'sec':'reps'}`:'';
 
-    // Progression badge — based on new palier system
+    // Progression badge — palier system
     const hist=state.repsHistory[ex.id]||[];
     let progBadge='';
-    const chain=PROGRESSION_CHAINS[ex.id];
-    if(chain){
-      const currentStep=(state.progressionStep&&state.progressionStep[ex.id])||0;
-      const isMaxed=currentStep>=chain.length-1;
+    const exChain=PROGRESSION_CHAINS[ex.id];
+    if(exChain){
+      const curStep=(state.progressionStep&&state.progressionStep[ex.id])||0;
+      const isMaxed=curStep>=exChain.length-1;
       if(isMaxed){
-        progBadge=`<div class="prog-unlock" style="background:linear-gradient(135deg,#D97706,#B45309)">🏆 Niveau max atteint !</div>`;
+        progBadge='<div class="prog-unlock" style="background:linear-gradient(135deg,#D97706,#B45309)">🏆 Niveau max atteint !</div>';
       } else {
-        const step=chain[currentStep];
-        const target=step.repsTarget;
+        const exStep=exChain[curStep];
+        const exTarget=exStep.repsTarget;
         const last3=hist.slice(-3);
-        const hitCount=last3.filter(s=>(s.reps||[]).length>0&&s.reps.every(r=>r>=target)).length;
+        const hitCount=last3.filter(s=>(s.reps||[]).length>0&&s.reps.every(r=>r>=exTarget)).length;
         if(hitCount>=3){
-          progBadge=`<div class="prog-unlock">🎯 3/3 — progression automatique à la fin de séance !</div>`;
+          progBadge='<div class="prog-unlock">🎯 3/3 — progression auto à la fin de séance !</div>';
         } else if(hitCount>0){
-          const nextLabel=chain[currentStep+1]?.label||'niveau max';
-          progBadge=`<div class="prog-unlock" style="background:linear-gradient(135deg,#059669,#047857)">${hitCount}/3 séances → ${nextLabel}</div>`;
+          const nextLbl=exChain[curStep+1]?.label||'niveau max';
+          progBadge='<div class="prog-unlock" style="background:linear-gradient(135deg,#059669,#047857)">'+hitCount+'/3 → '+nextLbl+'</div>';
         }
       }
     }
@@ -1331,9 +1325,9 @@ function awardXp(baseAmount, reason){
   const oldXp = state.xp;
   const oldLevel = getLevelFromXp(oldXp);
   state.xp = Math.max(0, state.xp + earned);
-  if(!state.xpLog) state.xpLog = [];
-  state.xpLog.push({date:new Date().toISOString(), xp:state.xp, delta:earned, reason:reason||''});
-  if(state.xpLog.length > 200) state.xpLog = state.xpLog.slice(-200);
+  if(!state.xpLog) state.xpLog=[];
+  state.xpLog.push({date:new Date().toISOString(),xp:state.xp,delta:earned,reason:reason||''});
+  if(state.xpLog.length>200) state.xpLog=state.xpLog.slice(-200);
   const newLevel = getLevelFromXp(state.xp);
 
   // Level-up bonus
@@ -1356,9 +1350,8 @@ function penalizeXp(amount){
   const floor = XP_THRESHOLDS[prog.level - 1];
   state.xp = Math.max(floor, state.xp - amount);
   state.level = getLevelFromXp(state.xp);
-  if(!state.xpLog) state.xpLog = [];
-  state.xpLog.push({date:new Date().toISOString(), xp:state.xp, delta:-amount, reason:'malus'});
-  if(state.xpLog.length > 200) state.xpLog = state.xpLog.slice(-200);
+  if(!state.xpLog) state.xpLog=[];
+  state.xpLog.push({date:new Date().toISOString(),xp:state.xp,delta:-amount,reason:'malus'});
 }
 
 // ============================================================
@@ -1562,8 +1555,7 @@ function finishWorkout(){
   const baseXp = isPartial ? 50 : 100;
   const xpResult = awardXp(baseXp, 'séance');
 
-  // progBonus = 0 (progression XP now handled exclusively by checkProgressionAdvance)
-  const progBonus = 0;
+  const progBonus = 0; // XP progression handled by checkProgressionAdvance only
 
   // Check challenge progress
   checkChallenge();
@@ -1699,51 +1691,30 @@ function updateXpCard(){
 
 
 function renderXpSuivi(){
-  const prog = xpProgress(state.xp);
-  const curWeek = getWeekKey(new Date());
-  const log = state.xpLog || [];
-
-  // XP gained this week (positive deltas only)
-  const weekXp = log
-    .filter(e => getWeekKey(new Date(e.date)) === curWeek && e.delta > 0)
-    .reduce((sum, e) => sum + e.delta, 0);
-
-  // Update summary stats
-  document.getElementById('xp-suivi-level').textContent = prog.level;
-  document.getElementById('xp-suivi-total').textContent = state.xp.toLocaleString();
-  document.getElementById('xp-suivi-gain').textContent = '+' + weekXp;
-  document.getElementById('xp-suivi-bar').style.width = prog.pct + '%';
-  document.getElementById('xp-suivi-next').textContent =
-    prog.level >= 100 ? 'Niveau MAX 🔱' :
-    `${prog.current.toLocaleString()} / ${prog.needed.toLocaleString()} XP → niv.${prog.level+1}`;
-
-  const title = LEVEL_TITLES[prog.level] || '';
-  document.getElementById('xp-suivi-summary').textContent =
-    `${title} · Multiplicateur streak actuel : ×${getXpMultiplier()}`;
-
-  // Paliers grid
-  const grid = document.getElementById('xp-paliers-grid');
-  grid.innerHTML = '';
-  const allExercises = [...SESSIONS.A.exercises, ...SESSIONS.B.exercises];
-  allExercises.forEach(ex => {
-    const chain = PROGRESSION_CHAINS[ex.id];
-    if(!chain) return;
-    const stepIdx = (state.progressionStep && state.progressionStep[ex.id]) || 0;
-    const isMax = stepIdx >= chain.length - 1;
-    const pct = Math.round((stepIdx / (chain.length - 1)) * 100);
-    const col = isMax ? '#D97706' : 'var(--blue)';
-    const label = chain[stepIdx]?.label || '';
-    const div = document.createElement('div');
-    div.style.cssText = 'background:var(--bg);border-radius:10px;padding:8px 10px';
-    div.innerHTML = `
-      <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ex.name}</div>
-      <div style="background:var(--border);border-radius:50px;height:4px;overflow:hidden;margin-bottom:4px">
-        <div style="background:${col};height:100%;border-radius:50px;width:${pct}%"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div style="font-size:10px;color:var(--muted)">${label}</div>
-        <div style="font-size:10px;font-weight:700;color:${col}">${isMax?'MAX 🏆':`${stepIdx+1}/${chain.length}`}</div>
-      </div>`;
+  const prog=xpProgress(state.xp);
+  const curWeek=getWeekKey(new Date());
+  const log=state.xpLog||[];
+  const weekXp=log.filter(e=>getWeekKey(new Date(e.date))===curWeek&&e.delta>0).reduce((s,e)=>s+e.delta,0);
+  document.getElementById('xp-suivi-level').textContent=prog.level;
+  document.getElementById('xp-suivi-total').textContent=state.xp.toLocaleString();
+  document.getElementById('xp-suivi-gain').textContent='+'+weekXp;
+  document.getElementById('xp-suivi-bar').style.width=prog.pct+'%';
+  document.getElementById('xp-suivi-next').textContent=prog.level>=100?'Niveau MAX 🔱':prog.current.toLocaleString()+' / '+prog.needed.toLocaleString()+' XP → niv.'+(prog.level+1);
+  document.getElementById('xp-suivi-summary').textContent=(LEVEL_TITLES[prog.level]||'')+' · Multiplicateur streak : ×'+getXpMultiplier();
+  const grid=document.getElementById('xp-paliers-grid');
+  grid.innerHTML='';
+  const allEx=[...SESSIONS.A.exercises,...SESSIONS.B.exercises];
+  allEx.forEach(ex=>{
+    const chain=PROGRESSION_CHAINS[ex.id];
+    if(!chain)return;
+    const stepIdx=(state.progressionStep&&state.progressionStep[ex.id])||0;
+    const isMax=stepIdx>=chain.length-1;
+    const pct=Math.round((stepIdx/(chain.length-1))*100);
+    const col=isMax?'#D97706':'var(--blue)';
+    const lbl=chain[stepIdx]?.label||'';
+    const div=document.createElement('div');
+    div.style.cssText='background:var(--bg);border-radius:10px;padding:8px 10px';
+    div.innerHTML='<div style="font-size:11px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+ex.name+'</div><div style="background:var(--border);border-radius:50px;height:4px;overflow:hidden;margin-bottom:4px"><div style="background:'+col+';height:100%;border-radius:50px;width:'+pct+'%"></div></div><div style="display:flex;justify-content:space-between"><div style="font-size:10px;color:var(--muted)">'+lbl+'</div><div style="font-size:10px;font-weight:700;color:'+col+'">'+(isMax?'MAX 🏆':(stepIdx+1)+'/'+chain.length)+'</div></div>';
     grid.appendChild(div);
   });
 }
@@ -1907,7 +1878,7 @@ async function sendTestNotif(){
 }
 
 function recoverFromOldStorage(){
-  const keys=['bodyflow_v17','bodyflow_v16','bodyflow_v15','bodyflow_v13'];
+  const keys=['bodyflow_v112','bodyflow_v111','bodyflow_v110','bodyflow_v19','bodyflow_v18','bodyflow_v17'];
   let recovered=false;
   for(const key of keys){
     try{
@@ -2138,12 +2109,13 @@ if('serviceWorker'in navigator&&location.hostname==='gw2rewards.github.io'){
 }
 
 loadState();
-// Migrate: recompute level from xp on load
+// Migrate
 state.level = getLevelFromXp(state.xp || 0);
 if(!state.weeklyPenalties) state.weeklyPenalties = {};
 if(!state.progressionStep) state.progressionStep = {};
+if(!state.xpLog) state.xpLog = [];
 checkWeeklyPenalty();
-applyProgressionToSessions(); // apply current progression levels to SESSIONS
+applyProgressionToSessions();
 renderProgramme();
 updateToday();
 renderChallenge();
