@@ -473,7 +473,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="settings-row" onclick="exportData()"><div class="s-left"><div class="s-icon" style="background:#EFF6FF">💾</div><div><div class="s-label">Sauvegarder mes données</div><div class="s-sub">Export JSON de l'historique</div></div></div><span class="s-arrow">↓</span></div>
     <div class="settings-row" onclick="resetData()"><div class="s-left"><div class="s-icon" style="background:#FEF2F2">🗑️</div><div><div class="s-label">Réinitialiser</div><div class="s-sub">Effacer tout l'historique</div></div></div><span class="s-arrow">→</span></div>
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.14 · Pour Boris 💪</div>
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.15 · Pour Boris 💪</div>
 </div>
 
 <!-- NAV -->
@@ -602,17 +602,25 @@ const SESSIONS = {
        {name:'Hip thrust sur chaise',diff:'⚡ Amplitude maximale',desc:'Épaules sur le bord du canapé, bassin qui descend sous le niveau du siège. Amplitude complète.'}
      ],
      elasticVariant:{band:'gray',usage:'Bande autour des cuisses (juste au-dessus des genoux). Pousse les genoux vers l\'extérieur contre la résistance tout au long du mouvement. C\'est l\'usage standard — pas une option avancée. Sans bande, tu utilises 40% moins de fessiers moyens.',tip:'Si la bande glisse vers les genoux, remonte-la entre les séries.'}},
-    {id:'a6',name:'Pompes diamant',exType:'reps',sets:2,repsTarget:6,restSecs:60,
-     why:'Variation des pompes qui isole spécifiquement les triceps (arrière des bras) et la partie sternale des pectoraux. La proximité des mains augmente la difficulté et le recrutement des triceps. Exercice finisher idéal après les pompes classiques.',
+    {id:'a6',name:'Romanian Deadlift bande',exType:'reps',sets:3,repsTarget:10,restSecs:60,
+     why:'Le meilleur exercice de chaîne postérieure sans équipement lourd. Renforce simultanément les ischio-jambiers, les fessiers et les érecteurs du rachis — les trois groupes musculaires les plus grands du corps. Avec la bande ancrée sous les pieds, la résistance augmente tout au long du mouvement et élimine la phase facile en bas. Idéal en finisher après le pont fessier : les fessiers et ischio-jambiers sont déjà activés.',
      technique:[
-       'Même position que les pompes classiques — alignement tête-talons impeccable',
-       'Rapprocher les mains sous la poitrine de façon à former un triangle (ou diamant) avec les pouces et index',
-       'Les coudes doivent rester proches du corps tout au long de la descente — c\'est ce qui isole les triceps',
-       'Descendre jusqu\'à la poitrine qui frôle le triangle de mains',
-       'Si trop difficile, rapprocher légèrement les mains sans aller jusqu\'au diamant parfait'
+       'Debout, pieds à largeur de bassin, place la bande sous les deux pieds (milieu de la bande sous chaque pied)',
+       'Saisis les deux extrémités de la bande, une dans chaque main, paumes vers toi',
+       'Genoux légèrement fléchis (jamais raides), dos plat et neutre tout au long du mouvement',
+       'Incline le buste vers l\'avant en poussant les hanches VERS L\'ARRIÈRE — c\'est une charnière à la hanche, pas une flexion du dos',
+       'Descends jusqu\'à sentir l\'étirement dans les ischio-jambiers (arrière des cuisses) — généralement à mi-tibia',
+       'Remonte en poussant les hanches vers l\'avant, expire en remontant, serre les fessiers en haut'
      ],
-     progression:'2×6 → 2×8 → 2×10 → pieds surélevés sur chaise.',
-     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+diamant+tutorial',alts:[{name:'Dips sur chaise',diff:'🔄 Variation',desc:'Mains sur chaise derrière toi, pieds au sol, descendre et remonter. Triceps pur.'},{name:'Pompes diamant genoux',diff:'🟢 Plus facile',desc:'Même position mains mais genoux au sol. -30% de charge.'}],elasticVariant:{band:'gray',usage:'Même setup que les pompes : bande croisée dans le dos, mains dans la boucle. Résistance concentrée sur les triceps qui font le gros du travail sur les pompes diamant.',tip:'Si trop difficile, utilise la bande seule sans la croiser.'}}
+     progression:'3×10 → 3×12 → 3×15 → bande dark gray (plus résistante) → 4×12.',
+     threshold:15,
+     videoLink:'https://www.youtube.com/results?search_query=romanian+deadlift+resistance+band+tutorial',
+     alts:[
+       {name:'Good morning bande',diff:'🔄 Variation',desc:'Même ancrage sous les pieds, mais bande derrière la nuque. Cible davantage les érecteurs du rachis.'},
+       {name:'Hip hinge seul',diff:'🟢 Sans bande',desc:'Même mouvement sans bande pour apprendre la technique avant d\'ajouter de la résistance.'},
+       {name:'RDL une jambe',diff:'⚡ Avancé',desc:'Même mouvement sur une seule jambe. Force unilatérale et équilibre maximaux.'}
+     ],
+     elasticVariant:{band:'gray',usage:'Bande MKAS grise (medium, 25-40 lbs) — bande simple, pas pliée en deux. Place le milieu de la bande sous tes deux pieds, pieds à largeur de bassin. Saisis une extrémité dans chaque main. La tension commence dès que tu tiens les extrémités : plus tu descends, plus la bande se tend, ce qui crée une résistance progressive. Commence avec la grise — si trop facile après 3 séances, passe à la dark gray. Ne croise pas la bande sous les pieds : garde-la droite pour éviter de la stresser en torsion.',tip:'Vérifie que la bande est bien centrée sous tes pieds avant chaque série — elle ne doit pas glisser vers les orteils ou le talon.'}}
   ]},
   B:{type:'B',name:'Full Body Pull/Postural + Tirage',color:'#1A5FAB',exercises:[
     {id:'b1',name:'Jumping jacks',exType:'cardio',sets:3,repsTarget:40,restSecs:30,
@@ -662,18 +670,26 @@ const SESSIONS = {
      ],
      progression:'15s → 20s → 25s → 30s → levée de jambe pendant le gainage.',
      threshold:30,videoLink:'https://www.youtube.com/results?search_query=side+plank+tutorial+gainage+lateral',alts:[{name:'Gainage latéral genoux',diff:'🟢 Plus facile',desc:'Genou du bas au sol, même alignement. -30% de charge.'},{name:'Gainage latéral + levée jambe',diff:'⚡ Plus intense',desc:'Lever la jambe du dessus 3s. Core latéral ++.'}],elasticVariant:{band:'gray',usage:'Bande autour des chevilles. En gainage latéral, lève légèrement la jambe du dessus contre la résistance. Obliques + fessier moyen en simultané.',tip:'Tu peux aussi juste laisser la bande tendue sans lever — déjà très efficace.'}},
-    {id:'b5',name:'Pompes déclinées',exType:'reps',sets:3,repsTarget:6,restSecs:60,
-     why:'Variante des pompes qui incline le corps (pieds plus hauts que les mains) pour cibler spécifiquement les deltoïdes antérieurs (épaules avant) et la partie claviculaire des pectoraux. Progression naturelle vers les pompes sur épaule et le handstand push-up.',
+    {id:'b5',name:'Overhead press bande',exType:'reps',sets:3,repsTarget:12,restSecs:60,
+     why:'Le seul exercice de poussée verticale du programme — pattern de mouvement totalement absent jusque-là. Renforce les deltoïdes (épaules), les triceps et les trapèzes supérieurs. Avec la bande ancrée sous les pieds, la résistance est maximale en haut où les épaules sont les plus fortes, ce qui correspond parfaitement à la courbe de force naturelle. Complète le ratio push/pull du programme et prévient les déséquilibres épaules.',
      technique:[
-       'Placer les pieds sur une chaise ou canapé, mains au sol à largeur d\'épaules',
-       'Corps aligné de la tête aux hanches — angle d\'environ 30-45° par rapport au sol',
-       'Descendre jusqu\'à ce que le front soit proche du sol (amplitude plus grande qu\'une pompe classique)',
-       'Coudes à 45° du corps — même règle que les pompes classiques',
-       'Pousser pour remonter, expirer en poussant',
-       'Plus les pieds sont hauts, plus l\'exercice est difficile et cible les épaules'
+       'Debout, pieds à largeur de bassin, place la bande sous les deux pieds',
+       'Saisis les extrémités de la bande, mains à hauteur des épaules, coudes légèrement devant toi (pas sur les côtés)',
+       'Poignets droits dans l\'axe des avant-bras — évite de les casser vers l\'arrière',
+       'Pousse verticalement vers le haut jusqu\'à extension complète des bras au-dessus de la tête',
+       'En haut, les bras sont droits mais sans verrouiller les coudes — légèrement fléchis',
+       'Redescends lentement en 2-3 secondes, coudes qui reviennent devant, pas sur les côtés'
      ],
-     progression:'3×6 → 3×8 → 3×10 → pieds plus hauts (tabouret, puis mur).',
-     threshold:10,videoLink:'https://www.youtube.com/results?search_query=pompes+declin%C3%A9es+technique',alts:[{name:'Pompes classiques',diff:'🟢 Plus facile',desc:'Si les déclinées sont trop difficiles, bonne technique avant tout.'},{name:'Pike push-up',diff:'⚡ Plus intense',desc:'Fesses en l\'air, descendre la tête vers le sol. Épaules très ciblées.'}],elasticVariant:{band:'gray',usage:'Bande croisée dans le dos comme pour les pompes classiques. En version déclinée, l\'angle met encore plus les épaules à contribution — la bande amplifie ça.',tip:'Vérifie que la bande ne glisse pas de tes paumes avant de commencer.'}},
+     progression:'3×12 → 3×15 → bande dark gray → 4×12 → 4×15.',
+     threshold:20,
+     videoLink:'https://www.youtube.com/results?search_query=overhead+press+resistance+band+tutorial',
+     alts:[
+       {name:'Press un bras',diff:'⚡ Plus intense',desc:'Même exercice sur un seul bras. Force unilatérale + gainage anti-rotation.'},
+       {name:'Arnold press bande',diff:'🔄 Variation',desc:'En montant, rotation des poignets vers l\'extérieur. Recrute davantage le deltoïde antérieur.'},
+       {name:'Élévations latérales bande',diff:'🔄 Isolation',desc:'Bras tendus sur les côtés, monte jusqu\'à hauteur des épaules. Cible le deltoïde médial — épaules plus larges.'}
+     ],
+     elasticVariant:{band:'gray',usage:'Bande MKAS grise (medium, 25-40 lbs) — bande simple, pas pliée en deux. Place le milieu de la bande sous tes deux pieds, pieds à largeur de bassin. Saisis chaque extrémité de la bande, remonte les mains jusqu\'à hauteur des épaules pour avoir la bonne tension de départ. Si la bande est trop longue et les mains trop basses même en position haute, enroule une fois autour de chaque main pour raccourcir. La gray suffit largement pour commencer — l\'overhead press avec bande fatigue les épaules vite.',tip:'Si la bande glisse sous tes pieds pendant la série, écarte légèrement les pieds ou repositionne avant la série suivante — ne continue pas avec une bande mal ancrée.'}}
+    ,
     {id:'b6',name:'Superman',exType:'reps',sets:3,repsTarget:10,restSecs:45,
      why:'Extension dorsale complète qui renforce toute la chaîne postérieure : érecteurs du rachis, fessiers et ischio-jambiers simultanément. Prévient activement le mal de dos. Exercice allongé sur le ventre — enchaîne naturellement avec le W au sol sans changer de position.',
      technique:[
@@ -717,12 +733,12 @@ const PROGRESSION_CHAINS = {
   'a3': [{sets:3,repsTarget:10,label:'3×10'},{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15 — niveau max'}],
   'a4': [{sets:3,repsTarget:25,label:'3×25s'},{sets:3,repsTarget:35,label:'3×35s'},{sets:3,repsTarget:45,label:'3×45s'},{sets:3,repsTarget:55,label:'3×55s'},{sets:3,repsTarget:60,label:'3×60s — niveau max'}],
   'a5': [{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:3,repsTarget:20,label:'3×20'},{sets:4,repsTarget:15,label:'4×15'},{sets:4,repsTarget:20,label:'4×20 — niveau max'}],
-  'a6': [{sets:2,repsTarget:6,label:'2×6'},{sets:2,repsTarget:8,label:'2×8'},{sets:3,repsTarget:8,label:'3×8'},{sets:3,repsTarget:10,label:'3×10'},{sets:3,repsTarget:12,label:'3×12 — niveau max'}],
+  'a6': [{sets:3,repsTarget:10,label:'3×10'},{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15 — niveau max'}],
   'b1': null,
   'b2': [{sets:3,repsTarget:6,label:'3×6/jambe'},{sets:3,repsTarget:8,label:'3×8/jambe'},{sets:3,repsTarget:10,label:'3×10/jambe'},{sets:4,repsTarget:8,label:'4×8/jambe'},{sets:4,repsTarget:10,label:'4×10/jambe — niveau max'}],
   'b3': [{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15'},{sets:4,repsTarget:20,label:'4×20 — niveau max'}],
   'b4': [{sets:3,repsTarget:15,label:'3×15s/côté'},{sets:3,repsTarget:20,label:'3×20s/côté'},{sets:3,repsTarget:25,label:'3×25s/côté'},{sets:3,repsTarget:30,label:'3×30s/côté'},{sets:3,repsTarget:40,label:'3×40s/côté — niveau max'}],
-  'b5': [{sets:3,repsTarget:6,label:'3×6'},{sets:3,repsTarget:8,label:'3×8'},{sets:3,repsTarget:10,label:'3×10'},{sets:4,repsTarget:8,label:'4×8'},{sets:4,repsTarget:10,label:'4×10 — niveau max'}],
+  'b5': [{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15'},{sets:4,repsTarget:20,label:'4×20 — niveau max'}],
   'b6': [{sets:3,repsTarget:10,label:'3×10'},{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15 — niveau max'}],
   'b7': [{sets:3,repsTarget:12,label:'3×12'},{sets:3,repsTarget:15,label:'3×15'},{sets:4,repsTarget:12,label:'4×12'},{sets:4,repsTarget:15,label:'4×15'},{sets:4,repsTarget:20,label:'4×20 — niveau max'}],
 };
@@ -883,7 +899,7 @@ function loadState(){
     }
   }catch(e){}
 }
-function saveState(){localStorage.setItem('bodyflow_v114',JSON.stringify(state))}
+function saveState(){localStorage.setItem('bodyflow_v115',JSON.stringify(state))}
 
 // ============================================================
 // NAVIGATION
@@ -1664,7 +1680,7 @@ function renderProgramme(){
       const altsHtml=ex.alts&&ex.alts.length?`<div class="ex-detail-section"><div class="ex-detail-title">\ud83d\udd04 Alternatives</div><div class="ex-detail-content">${ex.alts.map(a=>`<div style="background:#F1F5F9;border-radius:10px;padding:10px 12px;margin-bottom:8px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span style="font-size:12px">${a.diff}</span><strong style="font-size:13px">${a.name}</strong></div><div style="font-size:12px;color:#64748B;line-height:1.5">${a.desc}</div></div>`).join('')}</div></div>`:'';
       const bandLabels={'gray':'⬜ Grise (medium)','dark-gray':'◾ Gris foncé (heavy)','black':'⬛ Noire (extra-heavy)'};
       const elasticHtml=ex.elasticVariant?`<div class="ex-detail-section"><div class="ex-detail-title" style="color:#059669">🔴 Variante élastique</div><div class="ex-detail-content"><div style="background:#ECFDF5;border-radius:10px;padding:12px"><div style="font-size:11px;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Bande : ${bandLabels[ex.elasticVariant.band]||ex.elasticVariant.band}</div><div style="font-size:13px;color:#065F46;line-height:1.6;margin-bottom:8px">${ex.elasticVariant.usage}</div><div style="font-size:12px;color:#047857;font-style:italic">💡 ${ex.elasticVariant.tip}</div></div></div></div>`:'';
-      d.innerHTML=`<div class="prog-ex-header" onclick="this.parentElement.classList.toggle('open')"><div class="prog-num" style="background:${sess.color}22;color:${sess.color}">${i+1}</div><div class="prog-info"><div class="prog-name">${ex.name}</div><div class="prog-sets">${ex.sets} \u00d7 ${ex.exType==='timed'?ex.repsTarget+'s':ex.repsTarget+' reps'} \u00b7 ${ex.restSecs}s repos${(()=>{const chain=PROGRESSION_CHAINS[ex.id];if(!chain)return '';const stepIdx=(state.progressionStep&&state.progressionStep[ex.id])||0;const isMax=stepIdx>=chain.length-1;return isMax?' · <span style="color:#D97706;font-size:10px;font-weight:700">MAX \ud83c\udfc6</span>':' · <span style="color:#059669;font-size:10px">niv.'+(stepIdx+1)+'/'+chain.length+'</span>';})()}</div></div><span class="prog-chevron">\u25bc</span></div><div class="prog-detail"><div class="ex-detail-section" style="margin-top:12px"><div class="ex-detail-title">\ud83c\udfaf B\u00e9n\u00e9fice</div><div class="ex-detail-content">${ex.why}</div></div><div class="ex-detail-section"><div class="ex-detail-title">\ud83d\udcd0 Technique</div><div class="ex-detail-content"><ul style="margin:0;padding-left:18px">${techList}</ul></div></div><div class="ex-detail-section"><div class="ex-detail-title">\ud83d\udcc8 Progression</div><div class="ex-detail-content">${ex.progression}</div></div>${altsHtml}${elasticHtml}${linkBtn}</div>`;
+      d.innerHTML=`<div class="prog-ex-header" onclick="this.parentElement.classList.toggle('open')"><div class="prog-num" style="background:${sess.color}22;color:${sess.color}">${i+1}</div><div class="prog-info"><div class="prog-name">${ex.name}</div><div class="prog-sets">${ex.sets} \u00d7 ${ex.exType==='timed'?ex.repsTarget+'s':ex.repsTarget+' reps'} \u00b7 ${ex.restSecs}s repos${(()=>{const chain=PROGRESSION_CHAINS[ex.id];if(!chain)return '';const stepIdx=(state.progressionStep&&state.progressionStep[ex.id])||0;const isMax=stepIdx>=chain.length-1;return isMax?' · <span style="color:#D97706;font-size:10px;font-weight:700">MAX \ud83c\udfc6</span>':' · <span style="color:#059669;font-size:10px">niv.'+(stepIdx+1)+'/'+chain.length+'</span>';})()}</div>${ex.elasticVariant?(()=>{const bl={'gray':'⬜ Grise','dark-gray':'◾ Gris foncé','black':'⬛ Noire'};return '<div style="font-size:11px;color:#059669;font-weight:600;margin-top:2px">🔴 Bande '+( bl[ex.elasticVariant.band]||ex.elasticVariant.band)+'</div>';})():''}</div><span class="prog-chevron">\u25bc</span></div><div class="prog-detail"><div class="ex-detail-section" style="margin-top:12px"><div class="ex-detail-title">\ud83c\udfaf B\u00e9n\u00e9fice</div><div class="ex-detail-content">${ex.why}</div></div><div class="ex-detail-section"><div class="ex-detail-title">\ud83d\udcd0 Technique</div><div class="ex-detail-content"><ul style="margin:0;padding-left:18px">${techList}</ul></div></div><div class="ex-detail-section"><div class="ex-detail-title">\ud83d\udcc8 Progression</div><div class="ex-detail-content">${ex.progression}</div></div>${altsHtml}${elasticHtml}${linkBtn}</div>`;
       cont.appendChild(d);
     });
   });
