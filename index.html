@@ -166,6 +166,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .c-next-val{font-weight:700;font-size:15px}
 
 /* PROGRAMME */
+.activity-chip{padding:8px 14px;border-radius:50px;border:2px solid var(--border);background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text)}
+.activity-chip.selected{background:var(--green);color:#fff;border-color:var(--green)}
 .tab-row{display:flex;gap:8px;margin-bottom:20px}
 .tab-btn{flex:1;padding:10px;border-radius:50px;border:2px solid var(--border);background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
 .tab-btn.active{background:var(--text);color:#fff;border-color:var(--text)}
@@ -261,6 +263,36 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="hero-title" id="hero-title">Séance A</div>
     <div class="hero-sub" id="hero-sub">Full Body Push/Hinge · 6 exercices</div>
     <button class="btn btn-w" onclick="startWorkout()" id="start-btn">▶ Commencer la séance</button>
+  </div>
+
+  <!-- AUTRE ACTIVITÉ button -->
+  <div id="other-activity-btn-wrap" style="margin-bottom:12px;display:none">
+    <button class="btn" style="width:100%;justify-content:center;background:var(--white);border:2px solid var(--border);color:var(--text)" onclick="showOtherActivityModal()">🏃 Enregistrer une autre activité</button>
+  </div>
+
+  <!-- AUTRE ACTIVITÉ modal -->
+  <div id="other-activity-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:flex-end;justify-content:center">
+    <div style="background:var(--white);border-radius:24px 24px 0 0;padding:24px 20px 40px;width:100%;max-width:480px;box-sizing:border-box">
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;margin-bottom:4px">Autre activité 🏃</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:20px">Compte comme une séance complète</div>
+
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Sélectionne ou saisis</div>
+      <div id="activity-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+        <button class="activity-chip" onclick="selectChip(this,'Randonnée 🥾')">Randonnée 🥾</button>
+        <button class="activity-chip" onclick="selectChip(this,'Vélo 🚴')">Vélo 🚴</button>
+        <button class="activity-chip" onclick="selectChip(this,'Natation 🏊')">Natation 🏊</button>
+        <button class="activity-chip" onclick="selectChip(this,'Badminton 🏸')">Badminton 🏸</button>
+        <button class="activity-chip" onclick="selectChip(this,'Course à pied 🏃')">Course à pied 🏃</button>
+        <button class="activity-chip" onclick="selectChip(this,'Sport collectif ⚽')">Sport collectif ⚽</button>
+        <button class="activity-chip" onclick="selectChip(this,'Yoga / Stretching 🧘')">Yoga / Stretching 🧘</button>
+        <button class="activity-chip" onclick="selectChip(this,'Musculation 💪')">Musculation 💪</button>
+      </div>
+
+      <input id="activity-custom" type="text" placeholder="Autre activité..." style="width:100%;box-sizing:border-box;border:2px solid var(--border);border-radius:12px;padding:12px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;background:var(--bg);margin-bottom:16px" oninput="onCustomActivityInput(this.value)">
+
+      <button class="btn btn-g" style="width:100%;justify-content:center;margin-bottom:10px" onclick="confirmOtherActivity()">✅ Valider la séance</button>
+      <button class="btn" style="width:100%;justify-content:center;background:none;border:none;color:var(--muted)" onclick="hideOtherActivityModal()">Annuler</button>
+    </div>
   </div>
 
   <!-- POST-SÉANCE : repos mérité (affiché après séance complétée aujourd'hui) -->
@@ -473,7 +505,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="settings-row" onclick="exportData()"><div class="s-left"><div class="s-icon" style="background:#EFF6FF">💾</div><div><div class="s-label">Sauvegarder mes données</div><div class="s-sub">Export JSON de l'historique</div></div></div><span class="s-arrow">↓</span></div>
     <div class="settings-row" onclick="resetData()"><div class="s-left"><div class="s-icon" style="background:#FEF2F2">🗑️</div><div><div class="s-label">Réinitialiser</div><div class="s-sub">Effacer tout l'historique</div></div></div><span class="s-arrow">→</span></div>
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.15 · Pour Boris 💪</div>
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.16 · Pour Boris 💪</div>
 </div>
 
 <!-- NAV -->
@@ -899,7 +931,7 @@ function loadState(){
     }
   }catch(e){}
 }
-function saveState(){localStorage.setItem('bodyflow_v115',JSON.stringify(state))}
+function saveState(){localStorage.setItem('bodyflow_v116',JSON.stringify(state))}
 
 // ============================================================
 // NAVIGATION
@@ -944,6 +976,7 @@ function updateToday(){
 
   // Reset visibility
   restEarned.style.display='none';
+  document.getElementById('other-activity-btn-wrap').style.display='none';
   checkinCard.style.display='none';
   progAlert.style.display='none';
   nextCard.style.display='none';
@@ -958,6 +991,7 @@ function updateToday(){
     document.getElementById('hero-sub').textContent=`${sess.name} · ${last.duration} min · ${last.exercises} exercices`;
     document.getElementById('start-btn').style.display='none';
     restEarned.style.display='block';
+    document.getElementById('other-activity-btn-wrap').style.display='block';
     document.getElementById('rest-earned-title').textContent=`Séance ${last.type} dans la boîte 💪`;
     document.getElementById('rest-earned-sub').textContent=`${last.duration} min · ${last.exercises} exercices complétés`;
     setMotive(true);
@@ -978,6 +1012,7 @@ function updateToday(){
     document.getElementById('hero-sub').textContent='Marche 20 min · Étirements · Hydratation';
     document.getElementById('start-btn').style.display='none';
     checkinCard.style.display='block';
+    document.getElementById('other-activity-btn-wrap').style.display='block';
     // Restore checkin if already done
     const ci=state.checkins[todayKey()];
     if(ci){
@@ -989,6 +1024,7 @@ function updateToday(){
     }
     if(state.history.length>0){
       nextCard.style.display='block';
+    document.getElementById('other-activity-btn-wrap').style.display='block';
       const nextDay=getNextTrainingDay();
       const txt=nextDay?`${nextDay.label} → Séance ${nextType} · ${SESSIONS[nextType].name}`:`Séance ${nextType} · ${SESSIONS[nextType].name}`;
       document.getElementById('next-session-text').textContent=txt;
@@ -1822,7 +1858,7 @@ function renderHistory(){
   [...state.history].reverse().forEach(h=>{
     const d=new Date(h.date);
     const div=document.createElement('div');div.className='history-item';
-    div.innerHTML=`<div class="h-badge" style="background:${h.type==='A'?'var(--green)':'var(--blue)'}">S${h.type}</div><div class="h-info"><div class="h-name">${SESSIONS[h.type].name}${h.partial?' <span style="color:var(--yellow);font-size:11px">⚡</span>':''}</div><div class="h-date">${DN[d.getDay()]} ${d.getDate()} ${MN[d.getMonth()]} ${d.getFullYear()}</div><div class="h-dur">${h.duration} min · ${h.exercises}/${h.total||6} exercices</div></div>`;
+    div.innerHTML=`<div class="h-badge" style="background:${h.type==='A'?'var(--green)':h.type==='B'?'var(--blue)':'var(--coral)'}"> ${h.type==='EXT'?'🏃':'S'+h.type}</div><div class="h-info"><div class="h-name">${h.external?h.activityName:(SESSIONS[h.type]?.name||h.type)}${h.partial?' <span style="color:var(--yellow);font-size:11px">⚡</span>':''}</div><div class="h-date">${DN[d.getDay()]} ${d.getDate()} ${MN[d.getMonth()]} ${d.getFullYear()}</div><div class="h-dur">${h.external?'Activité externe':''+h.duration+' min · '+h.exercises+'/'+(h.total||6)+' exercices'}</div></div>`;
     list.appendChild(div);
   });
 }
@@ -1929,6 +1965,84 @@ function recoverFromOldStorage(){
     }catch(e){}
   }
   if(!recovered)showToast('Aucune donnée ancienne trouvée');
+}
+
+
+// ============================================================
+// AUTRE ACTIVITÉ
+// ============================================================
+let selectedChipActivity = '';
+
+function showOtherActivityModal(){
+  // Reset state
+  selectedChipActivity = '';
+  document.getElementById('activity-custom').value = '';
+  document.querySelectorAll('.activity-chip').forEach(c => c.classList.remove('selected'));
+  const modal = document.getElementById('other-activity-modal');
+  modal.style.display = 'flex';
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function hideOtherActivityModal(){
+  document.getElementById('other-activity-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function selectChip(el, label){
+  // Deselect all, select clicked
+  document.querySelectorAll('.activity-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedChipActivity = label;
+  // Clear custom input
+  document.getElementById('activity-custom').value = '';
+}
+
+function onCustomActivityInput(val){
+  if(val.trim()){
+    // Deselect chips when typing custom
+    document.querySelectorAll('.activity-chip').forEach(c => c.classList.remove('selected'));
+    selectedChipActivity = '';
+  }
+}
+
+function confirmOtherActivity(){
+  const customVal = document.getElementById('activity-custom').value.trim();
+  const activityName = customVal || selectedChipActivity;
+
+  if(!activityName){
+    showToast('Sélectionne ou saisis une activité');
+    return;
+  }
+
+  // Record as external session
+  const record = {
+    type:'EXT',
+    activityName,
+    date: new Date().toISOString(),
+    duration: 0,
+    exercises: 0,
+    total: 0,
+    partial: false,
+    external: true
+  };
+  state.history.push(record);
+
+  // Award full XP (same as complete session)
+  const xpResult = awardXp(100, 'activité externe');
+
+  // Check challenge
+  checkChallenge();
+
+  // Check weekly penalty won't apply (session logged)
+  const newBadges = checkBadges();
+  saveState();
+
+  hideOtherActivityModal();
+  updateToday();
+
+  // Show mini completion toast
+  showToast('🏃 ' + activityName + ' enregistrée ! +' + xpResult.earned + ' XP');
 }
 
 function showToast(msg){
