@@ -505,7 +505,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="settings-row" onclick="exportData()"><div class="s-left"><div class="s-icon" style="background:#EFF6FF">💾</div><div><div class="s-label">Sauvegarder mes données</div><div class="s-sub">Export JSON de l'historique</div></div></div><span class="s-arrow">↓</span></div>
     <div class="settings-row" onclick="resetData()"><div class="s-left"><div class="s-icon" style="background:#FEF2F2">🗑️</div><div><div class="s-label">Réinitialiser</div><div class="s-sub">Effacer tout l'historique</div></div></div><span class="s-arrow">→</span></div>
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.16 · Pour Boris 💪</div>
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.17 · Pour Boris 💪</div>
 </div>
 
 <!-- NAV -->
@@ -931,7 +931,7 @@ function loadState(){
     }
   }catch(e){}
 }
-function saveState(){localStorage.setItem('bodyflow_v116',JSON.stringify(state))}
+function saveState(){localStorage.setItem('bodyflow_v117',JSON.stringify(state))}
 
 // ============================================================
 // NAVIGATION
@@ -2225,7 +2225,7 @@ function checkWeeklyPenalty(){
 // ============================================================
 
 // Enregistrement Service Worker
-if('serviceWorker'in navigator&&location.hostname==='gw2rewards.github.io'){
+if('serviceWorker'in navigator&&location.hostname==='nachboris.github.io'){
   navigator.serviceWorker.register('/BODYFLOW/sw.js')
     .then(reg=>{
       console.log('BodyFlow SW enregistré',reg.scope);
