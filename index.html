@@ -505,7 +505,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     <div class="settings-row" onclick="exportData()"><div class="s-left"><div class="s-icon" style="background:#EFF6FF">💾</div><div><div class="s-label">Sauvegarder mes données</div><div class="s-sub">Export JSON de l'historique</div></div></div><span class="s-arrow">↓</span></div>
     <div class="settings-row" onclick="resetData()"><div class="s-left"><div class="s-icon" style="background:#FEF2F2">🗑️</div><div><div class="s-label">Réinitialiser</div><div class="s-sub">Effacer tout l'historique</div></div></div><span class="s-arrow">→</span></div>
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.17 · Pour Boris 💪</div>
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">BodyFlow v1.18 · Pour Boris 💪</div>
 </div>
 
 <!-- NAV -->
@@ -920,7 +920,7 @@ let selectedExId=null;
 function loadState(){
   // Try v1.3 key first, then migrate from v1.2
   try{
-    const s=localStorage.getItem('bodyflow_v114')||localStorage.getItem('bodyflow_v112')||localStorage.getItem('bodyflow_v111')||localStorage.getItem('bodyflow_v110')||localStorage.getItem('bodyflow_v19');
+    const s=localStorage.getItem('bodyflow_v118')||localStorage.getItem('bodyflow_v117')||localStorage.getItem('bodyflow_v116')||localStorage.getItem('bodyflow_v115')||localStorage.getItem('bodyflow_v114')||localStorage.getItem('bodyflow_v112')||localStorage.getItem('bodyflow_v111')||localStorage.getItem('bodyflow_v110')||localStorage.getItem('bodyflow_v19');
     if(s){state={...state,...JSON.parse(s)};return;}
     const old=localStorage.getItem('bodyflow_v12');
     if(old){
@@ -931,7 +931,7 @@ function loadState(){
     }
   }catch(e){}
 }
-function saveState(){localStorage.setItem('bodyflow_v117',JSON.stringify(state))}
+function saveState(){localStorage.setItem('bodyflow_v118',JSON.stringify(state))}
 
 // ============================================================
 // NAVIGATION
@@ -1827,16 +1827,21 @@ function renderWeekGraph(){
     weeks.push({key:getWeekKey(base),weeksAgo:i});
   }
   weeks.forEach(({key,weeksAgo})=>{
-    const sA=state.history.filter(h=>getWeekKey(new Date(h.date))===key&&h.type==='A').length;
-    const sB=state.history.filter(h=>getWeekKey(new Date(h.date))===key&&h.type==='B').length;
-    const total=sA+sB;
-    const pct=Math.min(100,(total/2)*100);
-    const bg=sA>0&&sB>0?'linear-gradient(to top,var(--green),var(--blue))':sA>0?'var(--green)':sB>0?'var(--blue)':'var(--border)';
+    const inWeek=state.history.filter(h=>getWeekKey(new Date(h.date))===key);
+    const sA=inWeek.filter(h=>h.type==='A').length;
+    const sB=inWeek.filter(h=>h.type==='B').length;
+    const sE=inWeek.filter(h=>h.type==='EXT').length;
+    const total=sA+sB+sE;
+    // hauteur : objectif 2 séances/sem = 100%. Min 12% si au moins 1 séance pour rester lisible.
+    const pct=total>0?Math.max(12,Math.min(100,(total/2)*100)):4;
+    const bg=sA>0&&sB>0?'linear-gradient(to top,var(--green),var(--blue))':sA>0?'var(--green)':sB>0?'var(--blue)':sE>0?'var(--coral)':'var(--border)';
     const isCur=weeksAgo===0;
-    const label=isCur?'Cur':(weeksAgo===1?'-1':`-${weeksAgo}`);
+    // label = date du lundi (début de semaine). key est déjà "YYYY-MM-DD" du lundi local.
+    const [, mo, da]=key.split('-');
+    const label=isCur?'Cette sem.':parseInt(da,10)+'/'+parseInt(mo,10);
     const col=document.createElement('div');col.className='week-col';
     col.style=isCur?'font-weight:700':'';
-    col.innerHTML='<div class="week-count" style="'+(isCur?'color:var(--green)':'')+'">'+(total>0?total:'')+'</div><div class="week-bar" style="height:'+(pct||4)+'%;background:'+bg+';opacity:'+(isCur?'1':'.7')+'"></div><div class="week-label" style="'+(isCur?'color:var(--green);font-weight:700':'')+'">'+(isCur?'● Cur':label)+'</div>';
+    col.innerHTML='<div class="week-count" style="'+(isCur?'color:var(--green)':'')+'">'+(total>0?total:'')+'</div><div class="week-bar" style="height:'+pct+'%;background:'+bg+';opacity:'+(isCur?'1':total>0?'.85':'.7')+'"></div><div class="week-label" style="'+(isCur?'color:var(--green);font-weight:700':'')+'">'+label+'</div>';
     wb.appendChild(col);
   });
 }
